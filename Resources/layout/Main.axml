@@ -1,4 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-	<Button android:id="@+id/myButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/hello" />
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
+        <Button
+            android:text="@string/btn_encript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonEncript" />
+        <Button
+            android:text="@string/btn_decript"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/buttonEncript"
+            android:id="@+id/buttonDecript" />
+    </RelativeLayout>
+    <TextView
+        android:text="Text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewData"
+        android:inputType="textMultiLine" />
 </LinearLayout>
