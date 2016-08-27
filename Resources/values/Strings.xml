@@ -4,4 +4,5 @@
 	<string name="app_name">Base64Decoder</string>
 	<string name="btn_encript">Encript</string>
 	<string name="btn_decript">Decript</string>
+	<string name="cb_compress">Compress</string>
 </resources>
