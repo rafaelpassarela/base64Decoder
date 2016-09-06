@@ -10,27 +10,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout">
         <Button
-            android:text="@string/btn_encript"
+            android:text="@string/btn_encrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonEncript" />
+            android:id="@+id/buttonEncrypt" />
         <Button
-            android:text="@string/btn_decript"
+            android:text="@string/btn_decrypt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/buttonEncript"
-            android:id="@+id/buttonDecript" />
+            android:layout_toRightOf="@id/buttonEncrypt"
+            android:id="@+id/buttonDecrypt" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/buttonDecript"
+            android:layout_toRightOf="@id/buttonDecrypt"
             android:layout_centerVertical="true"
             android:text="@string/cb_compress"
-            android:id="@+id/checkBox1" />
+            android:id="@+id/checkBoxCompress" />
     </RelativeLayout>
-    <EditText
-        android:inputType="textMultiLine"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/memoValue" />
+        android:id="@+id/relativeLayoutBottom">
+        <EditText
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Teste"
+            android:id="@+id/memoValue"
+            android:layout_marginBottom="50.0dp" />
+        <Button
+            android:text="@string/btn_clear"
+            android:id="@+id/buttonClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/memoValue"
+            android:layout_marginTop="-50.0dp"/>
+    </RelativeLayout>
 </LinearLayout>

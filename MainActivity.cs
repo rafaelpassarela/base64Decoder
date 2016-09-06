@@ -31,8 +31,9 @@ namespace Base64Decoder
 			if (compress){
 				using (var outStream = new MemoryStream())
 				{
-					using (var tinyStream = new GZipStream(outStream, CompressionMode.Compress))
-					using (var mStream = new MemoryStream(Encoding.UTF8.GetBytes(source)))
+                    //using (var tinyStream = new GZipStream(outStream, CompressionMode.Compress))
+                    using (var tinyStream = new GZipStream(outStream, CompressionLevel.Optimal))
+					using (var mStream = new MemoryStream(Encoding.UTF7.GetBytes(source)))
 						mStream.CopyTo(tinyStream);
 
 					compressed = outStream.ToArray();
@@ -87,20 +88,26 @@ namespace Base64Decoder
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button btnEncript = FindViewById<Button>(Resource.Id.buttonEncript);
-			Button btnDecript = FindViewById<Button>(Resource.Id.buttonDecript);
+			Button btnEncrypt = FindViewById<Button>(Resource.Id.buttonEncrypt);
+			Button btnDecrypt = FindViewById<Button>(Resource.Id.buttonDecrypt);
+            Button btnClear = FindViewById<Button>(Resource.Id.buttonClear);
 			EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
-			CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBox1);
+			CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
 
-			btnEncript.Click += delegate
+			btnEncrypt.Click += delegate
 			{
 				memoData.Text = EncriptText(memoData.Text, cbCompress.Checked);
 			};
 
-			btnDecript.Click += delegate
+			btnDecrypt.Click += delegate
 			{
-				memoData.Text = "Decript";
+				memoData.Text = "Decrypt not implemented :(";
 			};
+
+            btnClear.Click += delegate
+            {
+                memoData.Text = "";
+            };
 		}
 	}
 }

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">Base64Decoder</string>
-	<string name="btn_encript">Encript</string>
-	<string name="btn_decript">Decript</string>
-	<string name="cb_compress">Compress</string>
+  <string name="hello">Hello World, Click Me!</string>
+  <string name="app_name">Base64Decoder</string>
+  <string name="btn_encrypt">Encrypt</string>
+  <string name="btn_decrypt">Decrypt</string>
+  <string name="cb_compress">Compress</string>
+  <string name="btn_clear">Clear Text</string>
 </resources>
