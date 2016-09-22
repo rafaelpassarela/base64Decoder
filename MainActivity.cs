@@ -3,112 +3,148 @@ using Android.Widget;
 using Android.OS;
 using System.Text;
 using System.IO;
-using System.IO.Compression;
 using zlib;
+using System;
 
 namespace Base64Decoder
 {
-	[Activity(Label = "Base64Decoder", MainLauncher = true, Icon = "@mipmap/icon")]
-	public class MainActivity : Activity
-	{
+    [Activity(Label = "Base64Decoder", MainLauncher = true, Icon = "@mipmap/icon")]
+    public class MainActivity : Activity
+    {
 
-		public static void CopyTo(Stream src, Stream dest)
-		{
-			byte[] bytes = new byte[4096];
-			int cnt;
+        public static void CopyTo(Stream src, Stream dest)
+        {
+            byte[] bytes = new byte[4096];
+            int cnt;
 
-			while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
-			{
-				dest.Write(bytes, 0, cnt);
-			}
-		}
+            while ((cnt = src.Read(bytes, 0, bytes.Length)) != 0)
+            {
+                dest.Write(bytes, 0, cnt);
+            }
+        }
 
-		private string EncriptText(string source, bool compress)
-		{
-			byte[] compressed;
-			string output;
+        public static byte[] GetBytesEncoded(string value, int encType)
+        {
+            switch (encType)
+            {
+                case Resource.Id.rbFmtASCII:
+                    return Encoding.ASCII.GetBytes(value);
+                case Resource.Id.rbFmtUtf8:
+                    return Encoding.UTF8.GetBytes(value);
+                case Resource.Id.rbFmtUtf32:
+                    return Encoding.UTF32.GetBytes(value);
+                case Resource.Id.rbFmtUnicode:
+                    return Encoding.Unicode.GetBytes(value);
+                default:
+                    return Encoding.UTF7.GetBytes(value);
+            }
+        }
 
-			if (compress){
-				using (var outStream = new MemoryStream())
-				{
-                    //using (var tinyStream = new GZipStream(outStream, CompressionMode.Compress))
-                    using (var tinyStream = new GZipStream(outStream, CompressionLevel.Optimal))
-					using (var mStream = new MemoryStream(Encoding.UTF7.GetBytes(source)))
-						mStream.CopyTo(tinyStream);
+        public static string GetStringEncoded(byte[] value, int encType)
+        {
+            switch (encType)
+            {
+                case Resource.Id.rbFmtASCII:
+                    return Encoding.ASCII.GetString(value);
+                case Resource.Id.rbFmtUtf8:
+                    return Encoding.UTF8.GetString(value);
+                case Resource.Id.rbFmtUtf32:
+                    return Encoding.UTF32.GetString(value);
+                case Resource.Id.rbFmtUnicode:
+                    return Encoding.Unicode.GetString(value);
+                default:
+                    return Encoding.UTF7.GetString(value);
+            }
+        }
 
-					compressed = outStream.ToArray();
-				}
-			}
-			else {
-				compressed = Encoding.UTF7.GetBytes(source);
-			}
+        private string EncriptText(string source, bool compress)
+        {
+            byte[] compressed;
 
-			var plainTextBytes = Encoding.UTF7.GetBytes(Encoding.UTF7.GetString(compressed));
-			return System.Convert.ToBase64String(plainTextBytes);
+            RadioGroup grp = FindViewById<RadioGroup>(Resource.Id.radioGroup1);
 
-			//return Encoding.UTF8.GetString(compressed);
+            if (compress)
+            {
+                EditText edtLevel = FindViewById<EditText>(Resource.Id.editCompLevel);
+                int level = Int32.Parse(edtLevel.Text);
 
+                using (var outStream = new MemoryStream())
+                {
+                    byte[] text;
 
+                    using (var tinyStream = new ZOutputStream(outStream, level))
+                    {
+                        text = GetBytesEncoded(source, grp.CheckedRadioButtonId);
+                        tinyStream.Write(text, 0, text.Length);
+                    }
+                    compressed = outStream.ToArray();
+                }
+            }
+            else
+            {
+                compressed = GetBytesEncoded(source, grp.CheckedRadioButtonId);
+            }
 
-			// “compressed” now contains the compressed string.
-			// Also, all the streams are closed and the above is a self-contained operation.
+            return Convert.ToBase64String(compressed);
+        }
 
-			using (var inStream = new MemoryStream(compressed))
-			using (var bigStream = new GZipStream(inStream, CompressionMode.Decompress))
-			using (var bigStreamOut = new MemoryStream())
-			{
-				bigStream.CopyTo(bigStreamOut);
-				output = Encoding.UTF8.GetString(bigStreamOut.ToArray());
-			}
+        private string DecriptText(string b64Source, bool compress)
+        {
+            string output = "";
+            var source = Convert.FromBase64String(b64Source);
 
-			return output;
-		}
+            RadioGroup grp = FindViewById<RadioGroup>(Resource.Id.radioGroup1);
 
-		private string DecriptText(string source)
-		{
-			byte[] bytes = Encoding.UTF8.GetBytes(source);
-			using (var msi = new MemoryStream(bytes))
-			using (var mso = new MemoryStream())
-			{
-				using (var gs = new GZipStream(msi, CompressionMode.Decompress))
-				{
-					//gs.CopyTo(mso);
-					CopyTo(gs, mso);
-				}
+            if (compress)
+            {
+                using (var outStream = new MemoryStream())
+                {
+                    using (var tinyStream = new ZOutputStream(outStream))
+                    {
+                        tinyStream.Write(source, 0, source.Length);
+                    }
+                    output = GetStringEncoded(outStream.ToArray(), grp.CheckedRadioButtonId);
+                }
+            }
+            else
+            {
+                output = GetStringEncoded(source, grp.CheckedRadioButtonId);
+            }
+            return output;
+        }
 
-				return Encoding.UTF8.GetString(mso.ToArray());
-			}
-		}
-		protected override void OnCreate(Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-			// Set our view from the "main" layout resource
-			SetContentView(Resource.Layout.Main);
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			Button btnEncrypt = FindViewById<Button>(Resource.Id.buttonEncrypt);
-			Button btnDecrypt = FindViewById<Button>(Resource.Id.buttonDecrypt);
+            // Get our button from the layout resource,
+            // and attach an event to it
+            Button btnEncrypt = FindViewById<Button>(Resource.Id.buttonEncrypt);
+            Button btnDecrypt = FindViewById<Button>(Resource.Id.buttonDecrypt);
             Button btnClear = FindViewById<Button>(Resource.Id.buttonClear);
-			EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
-			CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
+            EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
+            CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
 
-			btnEncrypt.Click += delegate
-			{
-				memoData.Text = EncriptText(memoData.Text, cbCompress.Checked);
-			};
+            cbCompress.Checked = true;
 
-			btnDecrypt.Click += delegate
-			{
-				memoData.Text = "Decrypt not implemented :(";
-			};
+            btnEncrypt.Click += delegate
+            {
+                memoData.Text = EncriptText(memoData.Text, cbCompress.Checked);
+            };
+
+            btnDecrypt.Click += delegate
+            {
+                memoData.Text = DecriptText(memoData.Text, cbCompress.Checked);
+            };
 
             btnClear.Click += delegate
             {
                 memoData.Text = "";
             };
-		}
-	}
+        }
+    }
 }
 

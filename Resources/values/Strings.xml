@@ -6,4 +6,10 @@
   <string name="btn_decrypt">Decrypt</string>
   <string name="cb_compress">Compress</string>
   <string name="btn_clear">Clear Text</string>
+  <string name="ftm_utf32">UTF 32</string>
+  <string name="ftm_utf8">UTF 8</string>
+  <string name="ftm_utf7">UTF 7</string>
+  <string name="ftm_Anscii">ASCII</string>
+  <string name="ftm_Unicode">Unicode</string>
+  <string name="comp_level">Comp. Level</string>
 </resources>

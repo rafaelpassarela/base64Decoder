@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,6 +38,10 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <HintPath>packages\SharpZipLib.0.86.0\lib\11\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -54,8 +58,9 @@
     <Reference Include="Xamarin.Android.Support.v7.AppCompat">
       <HintPath>packages\Xamarin.Android.Support.v7.AppCompat.23.4.0.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
-    <Reference Include="zlib.net">
-      <HintPath>packages\zlib.net.1.0.4.0\lib\zlib.net.dll</HintPath>
+    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, PublicKeyToken=47d7877cb3620160">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib_dll\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
