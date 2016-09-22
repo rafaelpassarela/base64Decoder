@@ -1438,7 +1438,10 @@ namespace Base64Decoder
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int notification_template_icon_bg = 2130837579;
+			public const int icon = 2130837579;
+			
+			// aapt resource value: 0x7f02004c
+			public const int notification_template_icon_bg = 2130837580;
 			
 			static Drawable()
 			{

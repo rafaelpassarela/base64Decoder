@@ -8,7 +8,7 @@ using System;
 
 namespace Base64Decoder
 {
-    [Activity(Label = "Base64Decoder", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Base64Decoder", MainLauncher = true)]
     public class MainActivity : Activity
     {
 
