@@ -11,4 +11,5 @@
   <string name="ftm_Unicode">Unicode</string>-->
   <string name="comp_level">Taxa de Compactação</string>
   <string name="hint_text">Texto de Entrada</string>
+  <string name="git">Código Fonte</string>
 </resources>

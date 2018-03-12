@@ -1438,10 +1438,13 @@ namespace Base64Decoder
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int ic_launcher = 2130837579;
+			public const int ic_git = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int notification_template_icon_bg = 2130837580;
+			public const int ic_launcher = 2130837580;
+			
+			// aapt resource value: 0x7f02004d
+			public const int notification_template_icon_bg = 2130837581;
 			
 			static Drawable()
 			{
@@ -1611,6 +1614,9 @@ namespace Base64Decoder
 			
 			// aapt resource value: 0x7f0c0054
 			public const int memoValue = 2131492948;
+			
+			// aapt resource value: 0x7f0c006c
+			public const int menu_git = 2131492972;
 			
 			// aapt resource value: 0x7f0c001b
 			public const int middle = 2131492891;
@@ -1945,6 +1951,22 @@ namespace Base64Decoder
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int MainMenu = 2131558400;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class Mipmap
 		{
 			
@@ -2053,6 +2075,9 @@ namespace Base64Decoder
 			
 			// aapt resource value: 0x7f06001a
 			public const int ftm_utf8 = 2131099674;
+			
+			// aapt resource value: 0x7f060020
+			public const int git = 2131099680;
 			
 			// aapt resource value: 0x7f06001f
 			public const int hint_text = 2131099679;

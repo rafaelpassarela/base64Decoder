@@ -12,4 +12,5 @@
   <string name="ftm_Unicode">Unicode</string>
   <string name="comp_level">Comp. Level</string>
   <string name="hint_text">Input Text Here</string>
+  <string name="git">Source Code</string>
 </resources>

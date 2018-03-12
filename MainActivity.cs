@@ -1,5 +1,7 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using System;
 
@@ -8,6 +10,26 @@ namespace Base64Decoder
     [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : Activity
     {
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.MainMenu, menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_git:
+                    var uri = Android.Net.Uri.Parse("https://github.com/rafaelpassarela/base64Decoder");
+                    var intent = new Intent(Intent.ActionView, uri);
+                    StartActivity(intent);
+                    return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -48,6 +70,10 @@ namespace Base64Decoder
             {
                 memoData.Text = "";
             };
+
+            // back button
+            //ActionBar.SetHomeButtonEnabled(true);
+            //ActionBar.SetDisplayHomeAsUpEnabled(true);
         }
     }
 }
