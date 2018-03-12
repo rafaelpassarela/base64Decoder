@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Base64Decoder</string>
+  <string name="btn_encrypt">Criptografar</string>
+  <string name="btn_decrypt">Descriptografar</string>
+  <string name="cb_compress">Compactar</string>
+  <string name="btn_clear">Limpar</string>
+  <!--<string name="ftm_utf32">UTF 32</string>
+  <string name="ftm_utf8">UTF 8</string>
+  <string name="ftm_utf7">UTF 7</string>
+  <string name="ftm_Anscii">ASCII</string>
+  <string name="ftm_Unicode">Unicode</string>-->
+  <string name="comp_level">Taxa de Compactação</string>
+</resources>
