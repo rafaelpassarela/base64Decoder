@@ -1,9 +1,6 @@
 ﻿using Android.App;
-using Android.Widget;
 using Android.OS;
-using System.Text;
-using System.IO;
-using zlib;
+using Android.Widget;
 using System;
 
 namespace Base64Decoder
@@ -45,7 +42,6 @@ namespace Base64Decoder
                 {
                     Toast.MakeText(this, e.Message, ToastLength.Long).Show();
                 }
-
             };
 
             btnClear.Click += delegate
