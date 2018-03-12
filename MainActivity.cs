@@ -8,10 +8,9 @@ using System;
 
 namespace Base64Decoder
 {
-    [Activity(Label = "Base64Decoder", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : Activity
     {
-
         public static void CopyTo(Stream src, Stream dest)
         {
             byte[] bytes = new byte[4096];
@@ -57,24 +56,19 @@ namespace Base64Decoder
             }
         }
 
-        private string EncriptText(string source, bool compress)
+        private string EncriptText(string source, bool compress, int compType, int compLevel)
         {
             byte[] compressed;
 
-            RadioGroup grp = FindViewById<RadioGroup>(Resource.Id.radioGroup1);
-
             if (compress)
             {
-                EditText edtLevel = FindViewById<EditText>(Resource.Id.editCompLevel);
-                int level = Int32.Parse(edtLevel.Text);
-
                 using (var outStream = new MemoryStream())
                 {
                     byte[] text;
 
-                    using (var tinyStream = new ZOutputStream(outStream, level))
+                    using (var tinyStream = new ZOutputStream(outStream, compLevel))
                     {
-                        text = GetBytesEncoded(source, grp.CheckedRadioButtonId);
+                        text = GetBytesEncoded(source, compType);
                         tinyStream.Write(text, 0, text.Length);
                     }
                     compressed = outStream.ToArray();
@@ -82,18 +76,16 @@ namespace Base64Decoder
             }
             else
             {
-                compressed = GetBytesEncoded(source, grp.CheckedRadioButtonId);
+                compressed = GetBytesEncoded(source, compType);
             }
 
             return Convert.ToBase64String(compressed);
         }
 
-        private string DecriptText(string b64Source, bool compress)
+        private string DecriptText(string b64Source, bool compress, int compType)
         {
             string output = "";
             var source = Convert.FromBase64String(b64Source);
-
-            RadioGroup grp = FindViewById<RadioGroup>(Resource.Id.radioGroup1);
 
             if (compress)
             {
@@ -103,12 +95,12 @@ namespace Base64Decoder
                     {
                         tinyStream.Write(source, 0, source.Length);
                     }
-                    output = GetStringEncoded(outStream.ToArray(), grp.CheckedRadioButtonId);
+                    output = GetStringEncoded(outStream.ToArray(), compType);
                 }
             }
             else
             {
-                output = GetStringEncoded(source, grp.CheckedRadioButtonId);
+                output = GetStringEncoded(source, compType);
             }
             return output;
         }
@@ -127,17 +119,27 @@ namespace Base64Decoder
             Button btnClear = FindViewById<Button>(Resource.Id.buttonClear);
             EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
             CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
+            RadioGroup gbCompLevel = FindViewById<RadioGroup>(Resource.Id.rgEncodeType);
+            EditText edtLevel = FindViewById<EditText>(Resource.Id.editCompLevel);
 
             cbCompress.Checked = true;
 
             btnEncrypt.Click += delegate
             {
-                memoData.Text = EncriptText(memoData.Text, cbCompress.Checked);
+                memoData.Text = EncriptText(memoData.Text, cbCompress.Checked, gbCompLevel.CheckedRadioButtonId, Int32.Parse(edtLevel.Text));
             };
 
             btnDecrypt.Click += delegate
             {
-                memoData.Text = DecriptText(memoData.Text, cbCompress.Checked);
+                try
+                {
+                    memoData.Text = DecriptText(memoData.Text, cbCompress.Checked, gbCompLevel.CheckedRadioButtonId);
+                }
+                catch (Exception e)
+                {
+                    Toast.MakeText(this, e.Message, ToastLength.Long).Show();
+                }
+
             };
 
             btnClear.Click += delegate
