@@ -5,100 +5,108 @@
     android:layout_height="wrap_content"
     android:minWidth="25px"
     android:minHeight="25px">
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="292.5dp"
-        android:id="@+id/relativeLayout">
-        <Button
-            android:text="@string/btn_encrypt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonEncrypt" />
-        <Button
-            android:text="@string/btn_decrypt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/buttonEncrypt"
-            android:id="@+id/buttonDecrypt" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/buttonDecrypt"
-            android:layout_centerVertical="false"
-            android:text="@string/cb_compress"
-            android:id="@+id/checkBoxCompress"
-            android:layout_alignBaseline="@id/buttonDecrypt" />
-        <EditText
-            android:inputType="textMultiLine"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/memoValue"
-            android:layout_marginBottom="50.0dp"
-            android:layout_marginTop="50dp"
-            android:hint="Informe o Texto Aqui" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/relativeLayoutBottom">
-        <Button
-            android:text="@string/btn_clear"
-            android:id="@+id/buttonClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/memoValue" />
-        <TextView
-            android:text="@string/comp_level"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/buttonClear"
-            android:id="@+id/textView1"
-            android:layout_alignBaseline="@id/buttonClear"
-            android:layout_marginLeft="10.5dp" />
-        <EditText
-            android:inputType="number"
-            android:layout_width="126.5dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/textView1"
-            android:id="@+id/editCompLevel"
-            android:text="-1"
-            android:layout_alignBaseline="@id/buttonClear"
-            android:layout_marginLeft="7.5dp" />
-        <RadioGroup
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/buttonClear"
-            android:id="@+id/rgEncodeType"
-            android:layout_marginRight="117.0dp">
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/ftm_Anscii"
-                android:id="@+id/rbFmtASCII" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ftm_utf7"
-                android:id="@+id/rbFmtUtf7" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ftm_utf8"
-                android:id="@+id/rbFmtUtf8" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ftm_utf32"
-                android:id="@+id/rbFmtUtf32" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ftm_Unicode"
-                android:id="@+id/rbFmtUnicode" />
-        </RadioGroup>
-    </RelativeLayout>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="292.5dp"
+                android:id="@+id/relativeLayout">
+                <Button
+                    android:text="@string/btn_encrypt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonEncrypt" />
+                <Button
+                    android:text="@string/btn_decrypt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/buttonEncrypt"
+                    android:id="@+id/buttonDecrypt" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/buttonDecrypt"
+                    android:layout_centerVertical="false"
+                    android:text="@string/cb_compress"
+                    android:id="@+id/checkBoxCompress"
+                    android:layout_alignBaseline="@id/buttonDecrypt" />
+                <EditText
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/memoValue"
+                    android:layout_marginBottom="50.0dp"
+                    android:layout_marginTop="50dp"
+                    android:hint="Informe o Texto Aqui" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/relativeLayoutBottom">
+                <Button
+                    android:text="@string/btn_clear"
+                    android:id="@+id/buttonClear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/memoValue" />
+                <TextView
+                    android:text="@string/comp_level"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/buttonClear"
+                    android:id="@+id/textView1"
+                    android:layout_alignBaseline="@id/buttonClear"
+                    android:layout_marginLeft="10.5dp" />
+                <EditText
+                    android:inputType="number"
+                    android:layout_width="126.5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/textView1"
+                    android:id="@+id/editCompLevel"
+                    android:text="-1"
+                    android:layout_alignBaseline="@id/buttonClear"
+                    android:layout_marginLeft="7.5dp" />
+                <RadioGroup
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonClear"
+                    android:id="@+id/rgEncodeType"
+                    android:layout_marginRight="117.0dp">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/ftm_Anscii"
+                        android:id="@+id/rbFmtASCII" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ftm_utf7"
+                        android:id="@+id/rbFmtUtf7" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ftm_utf8"
+                        android:id="@+id/rbFmtUtf8" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ftm_utf32"
+                        android:id="@+id/rbFmtUtf32" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ftm_Unicode"
+                        android:id="@+id/rbFmtUnicode" />
+                </RadioGroup>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
