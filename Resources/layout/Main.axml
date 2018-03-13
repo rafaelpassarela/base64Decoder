@@ -63,15 +63,14 @@
                     android:id="@+id/textView1"
                     android:layout_alignBaseline="@id/buttonClear"
                     android:layout_marginLeft="10.5dp" />
-                <EditText
-                    android:inputType="number"
+                <Spinner
+                    android:id="@+id/spinnerCompLevel"
                     android:layout_width="126.5dp"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/textView1"
-                    android:id="@+id/editCompLevel"
-                    android:text="-1"
                     android:layout_alignBaseline="@id/buttonClear"
-                    android:layout_marginLeft="7.5dp" />
+                    android:layout_marginLeft="7.5dp"
+                    android:prompt="@string/comp_level" />
                 <RadioGroup
                     android:minWidth="25px"
                     android:minHeight="25px"

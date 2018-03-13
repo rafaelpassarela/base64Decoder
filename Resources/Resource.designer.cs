@@ -71,6 +71,22 @@ namespace Base64Decoder
 			}
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int comp_values = 2131558400;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -1561,9 +1577,6 @@ namespace Base64Decoder
 			// aapt resource value: 0x7f0c000c
 			public const int disableHome = 2131492876;
 			
-			// aapt resource value: 0x7f0c0058
-			public const int editCompLevel = 2131492952;
-			
 			// aapt resource value: 0x7f0c0043
 			public const int edit_query = 2131492931;
 			
@@ -1728,6 +1741,9 @@ namespace Base64Decoder
 			
 			// aapt resource value: 0x7f0c002c
 			public const int spacer = 2131492908;
+			
+			// aapt resource value: 0x7f0c0058
+			public const int spinnerCompLevel = 2131492952;
 			
 			// aapt resource value: 0x7f0c0007
 			public const int split_action_bar = 2131492871;
@@ -1954,8 +1970,8 @@ namespace Base64Decoder
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7f0d0000
-			public const int MainMenu = 2131558400;
+			// aapt resource value: 0x7f0e0000
+			public const int MainMenu = 2131623936;
 			
 			static Menu()
 			{

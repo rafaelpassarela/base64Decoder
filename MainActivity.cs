@@ -45,13 +45,14 @@ namespace Base64Decoder
             EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
             CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
             RadioGroup gbCompLevel = FindViewById<RadioGroup>(Resource.Id.rgEncodeType);
-            EditText edtLevel = FindViewById<EditText>(Resource.Id.editCompLevel);
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinnerCompLevel);
 
             cbCompress.Checked = true;
 
             btnEncrypt.Click += delegate
             {
-                memoData.Text = DecoderUtil.EncriptText(memoData.Text, cbCompress.Checked, gbCompLevel.CheckedRadioButtonId, Int32.Parse(edtLevel.Text));
+                int comp = Int32.Parse(spinner.SelectedItem.ToString());
+                memoData.Text = DecoderUtil.EncriptText(memoData.Text, cbCompress.Checked, gbCompLevel.CheckedRadioButtonId, comp);
             };
 
             btnDecrypt.Click += delegate
@@ -70,11 +71,14 @@ namespace Base64Decoder
             {
                 memoData.Text = "";
             };
+            
+            var adapter = ArrayAdapter.CreateFromResource(
+                    this, Resource.Array.comp_values, Android.Resource.Layout.SimpleSpinnerItem);
 
-            // back button
-            //ActionBar.SetHomeButtonEnabled(true);
-            //ActionBar.SetDisplayHomeAsUpEnabled(true);
+            adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = adapter;            
         }
+
     }
 }
 
