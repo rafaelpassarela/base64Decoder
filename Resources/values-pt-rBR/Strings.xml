@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="btn_encrypt">Criptografar</string>
-  <string name="btn_decrypt">Descriptografar</string>
+  <string name="btn_decrypt">Descripto.</string>
   <string name="cb_compress">Compactar</string>
   <string name="btn_clear">Limpar</string>
   <!--<string name="ftm_utf32">UTF 32</string>
@@ -12,4 +12,6 @@
   <string name="comp_level">Taxa de Compactação</string>
   <string name="hint_text">Texto de Entrada</string>
   <string name="git">Código Fonte</string>
+  <string name="copy_done">Texto Copiado para a Área de Transferência</string>
+  <string name="paste_done">Um texto foi Colado da Área de Transferência</string>
 </resources>

@@ -14,16 +14,16 @@
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="292.5dp"
+                android:layout_height="259.5dp"
                 android:id="@+id/relativeLayout">
                 <Button
                     android:text="@string/btn_encrypt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/buttonEncrypt" />
                 <Button
                     android:text="@string/btn_decrypt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/buttonEncrypt"
                     android:id="@+id/buttonDecrypt" />
@@ -35,6 +35,24 @@
                     android:text="@string/cb_compress"
                     android:id="@+id/checkBoxCompress"
                     android:layout_alignBaseline="@id/buttonDecrypt" />
+                <Button
+                    android:text="@android:string/copy"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonEncrypt"
+                    android:id="@+id/buttonCopy" />
+                <Button
+                    android:text="@android:string/paste"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonPaste"
+                    android:layout_below="@+id/buttonCopy" />
+                <Button
+                    android:text="@string/btn_clear"
+                    android:id="@+id/buttonClear"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/buttonPaste" />
                 <EditText
                     android:inputType="textMultiLine"
                     android:layout_width="match_parent"
@@ -42,43 +60,40 @@
                     android:id="@+id/memoValue"
                     android:layout_marginBottom="50.0dp"
                     android:layout_marginTop="50dp"
-                    android:hint="@string/hint_text" />
+                    android:hint="@string/hint_text"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/buttonCopy" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/relativeLayoutBottom">
-                <Button
-                    android:text="@string/btn_clear"
-                    android:id="@+id/buttonClear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/memoValue" />
                 <TextView
                     android:text="@string/comp_level"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/buttonClear"
-                    android:id="@+id/textView1"
+                    android:id="@+id/textViewCompType"
                     android:layout_alignBaseline="@id/buttonClear"
                     android:layout_marginLeft="10.5dp" />
                 <Spinner
                     android:id="@+id/spinnerCompLevel"
                     android:layout_width="126.5dp"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/textView1"
-                    android:layout_alignBaseline="@id/buttonClear"
+                    android:layout_toRightOf="@+id/textViewCompType"
                     android:layout_marginLeft="7.5dp"
-                    android:prompt="@string/comp_level" />
+                    android:prompt="@string/comp_level"
+                    android:layout_centerInParent="@+id/textViewCompType" />
                 <RadioGroup
                     android:minWidth="25px"
                     android:minHeight="25px"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/buttonClear"
+                    android:layout_below="@+id/textViewCompType"
                     android:id="@+id/rgEncodeType"
-                    android:layout_marginRight="117.0dp">
+                    android:layout_marginRight="117.0dp"
+                    android:layout_marginTop="10dp">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

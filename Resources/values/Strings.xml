@@ -13,6 +13,8 @@
   <string name="comp_level">Comp. Level</string>
   <string name="hint_text">Input Text Here</string>
   <string name="git">Source Code</string>
+  <string name="copy_done">Text Copied to Clipboard</string>
+  <string name="paste_done">A text was pasted from the Clipboard</string>
 
   <string-array name="comp_values">
     <item>-1</item>

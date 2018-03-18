@@ -42,6 +42,9 @@ namespace Base64Decoder
             Button btnEncrypt = FindViewById<Button>(Resource.Id.buttonEncrypt);
             Button btnDecrypt = FindViewById<Button>(Resource.Id.buttonDecrypt);
             Button btnClear = FindViewById<Button>(Resource.Id.buttonClear);
+            Button btnCopy = FindViewById<Button>(Resource.Id.buttonCopy);
+            Button btnPaste = FindViewById<Button>(Resource.Id.buttonPaste);
+
             EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
             CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
             RadioGroup gbCompLevel = FindViewById<RadioGroup>(Resource.Id.rgEncodeType);
@@ -71,12 +74,36 @@ namespace Base64Decoder
             {
                 memoData.Text = "";
             };
-            
+
+            btnCopy.Click += delegate
+            {
+                // Open the clipboard
+                var clipboard = (ClipboardManager) GetSystemService(ClipboardService);
+                // Set clipboard text
+                clipboard.Text = memoData.Text;
+
+                Toast.MakeText(this, Resource.String.copy_done, ToastLength.Long).Show();
+            };
+
+            btnPaste.Click += delegate
+            {
+                var clipboard = (ClipboardManager)GetSystemService(ClipboardService);
+                if (clipboard.HasPrimaryClip)
+                {
+                    //since the clipboard contains plain text.
+                    var item = clipboard.PrimaryClip.GetItemAt(0);
+                    // Gets the clipboard as text.
+                    memoData.Text = item.Text;
+
+                    Toast.MakeText(this, Resource.String.paste_done, ToastLength.Long).Show();
+                }
+            };
+
             var adapter = ArrayAdapter.CreateFromResource(
                     this, Resource.Array.comp_values, Android.Resource.Layout.SimpleSpinnerItem);
 
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter;            
+            spinner.Adapter = adapter;
         }
 
     }
