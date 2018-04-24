@@ -10,7 +10,7 @@ namespace Base64Decoder
     [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        private EditText memoData = null;
+        private EditText memoData;
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -119,7 +119,7 @@ namespace Base64Decoder
 
         private void ShareText()
         {
-            // send as Text Message (SMS)
+            // send as Text Message
             Intent intentsend = new Intent();
             intentsend.SetAction(Intent.ActionSend);
             intentsend.PutExtra(Intent.ExtraText, memoData.Text);

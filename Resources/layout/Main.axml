@@ -20,7 +20,7 @@
                     android:text="@string/btn_encrypt"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/buttonEncrypt"/>
+                    android:id="@+id/buttonEncrypt" />
                 <Button
                     android:text="@string/btn_decrypt"
                     android:layout_width="130dp"
