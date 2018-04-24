@@ -10,6 +10,8 @@ namespace Base64Decoder
     [Activity(Label = "@string/app_name", MainLauncher = true)]
     public class MainActivity : Activity
     {
+        private EditText memoData = null;
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.MainMenu, menu);
@@ -21,9 +23,10 @@ namespace Base64Decoder
             switch (item.ItemId)
             {
                 case Resource.Id.menu_git:
-                    var uri = Android.Net.Uri.Parse("https://github.com/rafaelpassarela/base64Decoder");
-                    var intent = new Intent(Intent.ActionView, uri);
-                    StartActivity(intent);
+                    ShowGitPage();
+                    return true;
+                case Resource.Id.menu_share:
+                    ShareText();
                     return true;
             }
 
@@ -44,8 +47,8 @@ namespace Base64Decoder
             Button btnClear = FindViewById<Button>(Resource.Id.buttonClear);
             Button btnCopy = FindViewById<Button>(Resource.Id.buttonCopy);
             Button btnPaste = FindViewById<Button>(Resource.Id.buttonPaste);
+            memoData = FindViewById<EditText>(Resource.Id.memoValue);
 
-            EditText memoData = FindViewById<EditText>(Resource.Id.memoValue);
             CheckBox cbCompress = FindViewById<CheckBox>(Resource.Id.checkBoxCompress);
             RadioGroup gbCompLevel = FindViewById<RadioGroup>(Resource.Id.rgEncodeType);
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinnerCompLevel);
@@ -99,11 +102,29 @@ namespace Base64Decoder
                 }
             };
 
+            // drop down list (ComboBox)
             var adapter = ArrayAdapter.CreateFromResource(
                     this, Resource.Array.comp_values, Android.Resource.Layout.SimpleSpinnerItem);
 
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = adapter;
+        }
+
+        private void ShowGitPage()
+        {
+            var uri = Android.Net.Uri.Parse("https://goo.gl/iHxzZc");
+            var intent = new Intent(Intent.ActionView, uri);
+            StartActivity(intent);
+        }
+
+        private void ShareText()
+        {
+            // send as Text Message (SMS)
+            Intent intentsend = new Intent();
+            intentsend.SetAction(Intent.ActionSend);
+            intentsend.PutExtra(Intent.ExtraText, memoData.Text);
+            intentsend.SetType("text/plain");
+            StartActivity(Intent.CreateChooser(intentsend, "Share Via"));
         }
 
     }

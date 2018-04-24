@@ -1634,8 +1634,11 @@ namespace Base64Decoder
 			// aapt resource value: 0x7f0c0057
 			public const int memoValue = 2131492951;
 			
+			// aapt resource value: 0x7f0c006f
+			public const int menu_git = 2131492975;
+			
 			// aapt resource value: 0x7f0c006e
-			public const int menu_git = 2131492974;
+			public const int menu_share = 2131492974;
 			
 			// aapt resource value: 0x7f0c001b
 			public const int middle = 2131492891;
@@ -2109,6 +2112,9 @@ namespace Base64Decoder
 			
 			// aapt resource value: 0x7f060022
 			public const int paste_done = 2131099682;
+			
+			// aapt resource value: 0x7f060023
+			public const int share = 2131099683;
 			
 			// aapt resource value: 0x7f060013
 			public const int status_bar_notification_info_overflow = 2131099667;
