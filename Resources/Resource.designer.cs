@@ -2116,6 +2116,9 @@ namespace Base64Decoder
 			// aapt resource value: 0x7f060023
 			public const int share = 2131099683;
 			
+			// aapt resource value: 0x7f060024
+			public const int share_by = 2131099684;
+			
 			// aapt resource value: 0x7f060013
 			public const int status_bar_notification_info_overflow = 2131099667;
 			

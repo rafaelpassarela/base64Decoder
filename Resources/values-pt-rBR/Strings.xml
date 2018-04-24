@@ -15,4 +15,5 @@
   <string name="copy_done">Texto Copiado para a Área de Transferência</string>
   <string name="paste_done">Um texto foi Colado da Área de Transferência</string>
   <string name="share">Compartilhar</string>
+  <string name="share_by">Compartilhar Com</string>
 </resources>

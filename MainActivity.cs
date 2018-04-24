@@ -124,7 +124,7 @@ namespace Base64Decoder
             intentsend.SetAction(Intent.ActionSend);
             intentsend.PutExtra(Intent.ExtraText, memoData.Text);
             intentsend.SetType("text/plain");
-            StartActivity(Intent.CreateChooser(intentsend, "Share Via"));
+            StartActivity(Intent.CreateChooser(intentsend, GetText(Resource.String.share_by) ));
         }
 
     }
